@@ -111,7 +111,7 @@ function recupApparts(){
 		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
 }
 
-//COUCOU COUAVOUZZ !!
+//COUCOU COUAVOUZZ !!!!!
 
 function refreshMainConteneur(titre){
 	document.getElementById('main-conteneur').innerHTML="";
