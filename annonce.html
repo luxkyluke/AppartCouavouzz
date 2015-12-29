@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+		<title>Adopte un Appart'</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="css/style.css" />
+        <script src="js/jquery.js"></script>
+        <script src="js/function.js"></script>
+</head>
+<body class="annoncepage">
+<!--Header-->
+		<div id="block-header"></div>	
+		<!-- Main -->
+		<div id="block-main">
+			<div class="conteneur">
+				<div class="row">
+					<div class="main-conteneur">
+						<!-- Content -->
+							<article class="box post">
+								<%
+								int idAppart= Integer.parseInt((String) request.getParameter("idAppart"));
+								Apartment appart =Database.getAppart(idAppart);
+								if(appart!=null){
+										out.println("<a href=\"\" onclick =\"return false;\"><div id =\"nexter\" class=\"image\">");
+										ArrayList<String> photos =appart.getPhotos();
+										out.println("<ul>");
+										for(String pho : photos){
+											out.println("<li><img src=\""+pho+"\" alt=\"\" /></li>");
+										}
+										out.println("</ul>");
+										out.println("</a></div>");
+										out.println("<div id=\"prix\"> <p>");
+											out.println((int)appart.getPrice()+" &euro;");
+										out.println("</p> </div>");
+										out.println("<div id=\"type\">");
+											out.println("<h3>"+appart.getType()+"</h3>");
+										out.println("</div>");
+										out.println("<header>");
+											out.println("<h2>Description</h2>");
+										out.println("</header>");
+										out.println("<p>"+ appart.getDesc() +"</p>");
+										out.println("<div id=\"proprio\">");									
+										out.println("<h3>Propri&eacutetaire</h3>");
+										out.println("<p>");
+											out.println(appart.getIdProprio());
+										out.println("</p>");
+										out.println("</div>");
+										out.println("<header>");
+											out.println("<h3>Adresse</h3>");
+										out.println("</header>");
+										out.println("<p>");
+											out.println(appart.getAddress());
+										out.println("</p>");	
+									out.println("</article>");
+									out.println("</div>");
+									
+									String proprio = (String) request.getParameter("proprio");
+									if(proprio==null){
+										ArrayList<Apartment> apparts = Database.getAppartsByType(appart.getType());
+										if(apparts!=null){
+					                        int i = (int)(Math.random() * (apparts.size()));
+											appart = apparts.get(i);
+					                        out.println("<div class=\"petit-conteneur\">");
+												out.println("<section class=\"box\">");
+													out.println("<a href=\"annonce.jsp?idAppart="+ appart.getId()+"\" class=\"image\">");
+													out.println("<img src=\""+appart.getPhotos().get(0)+"\" alt=\"\" /></a>");
+													out.println("<p id=\"prix\">"+ (int) appart.getPrice() +" &euro; </p>");
+													out.println("<header>");
+														out.println("<h3>Description</h3>");	
+													out.println("</header>");
+													out.println("<p>"+ appart.getDesc() +"</p>");
+													out.println("<p>"+ appart.getAddress() +"</p>");														
+													out.println("<footer>");
+													out.println("<a href = \"annonce.jsp?idAppart="+ appart.getId()+"\" class=\"button alt\"> Voir l'annonce </a>");
+													out.println("</footer>");
+												out.println("</section>");
+											out.println("</div>");
+										}
+									}
+						}
+						else {
+							out.println("annonce introuvable");
+							out.println("</div>"); 	
+						}
+                      %>
+				  </div>
+				</div>
+			</div>
+		</div>
+	<!--Footer-->
+	<div id="block-footer"></div>
+</body>
+</html>

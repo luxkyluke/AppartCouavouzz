@@ -1,0 +1,795 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*------------------BODY----------------*/
+
+body
+{
+	/*background: #FFF;*/
+	font-weight: 300;
+	font-family: Calibri;
+	margin : 0;
+	padding : 0;
+}
+
+#error {
+	color: rgba(247,2,6,1.00);
+	text-align:center;
+}
+/*-----------------HEADER--------------*/
+
+#header{
+	text-align:center;
+}
+
+#header h1 {
+	color: #252122;
+	font-weight: 400;
+	font-size: 5.5em;
+	letter-spacing: -0.035em;
+	margin: 0.5em 0px 0.5em;
+	font-family: "Century Gothic";
+	font-style: normal;
+	text-shadow: 0px 4px #A7A7A7;
+}
+
+
+/*----------------------------------BANNIERE------------------------------------------*/
+
+#banniere header
+{
+	display: inline-block;
+	padding: 2.5em 5em;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+	
+#banniere header h2
+{
+	color: #fff;
+	font-weight: 500;
+	font-family: "Century Gothic";
+	font-size: 2.5em;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0em;
+}
+
+#banniere header p 
+{
+	font-size: 1.5em;
+	color: rgba(188, 0, 0, 0.99);
+	padding: 0px;
+	font-style: normal;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-family: Calibri;
+	font-weight: 500;
+}
+#banniere
+{
+	background: #CCE8F4 url('../images/background.jpg');
+	background-position: center center;
+	background-size:  100%;
+	background-repeat: no-repeat;
+	text-align: center;
+	position: relative;
+	padding: 17em 17em 300px;
+	
+	margin:0;
+}
+
+#banniere header p p3 {
+	font-weight: bold;
+}
+
+/*-------------------------------NAV-----------------------------*/
+
+#nav {
+	border: none;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	font-family: "Calibri";
+	font-size: 1.25em;/*  width: auto;*/
+}
+#nav ul {
+  background: none repeat scroll 0% 0% #AD0B0B;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 58px;
+}
+#nav li {
+  display:inline-block;
+  padding: 2px;
+}
+#nav li a{
+	display: block;
+	line-height: 35px;
+	padding: 10px 3em;
+	text-align: center;
+	text-decoration: none;
+}
+#nav > ul > li > a {
+  color: #cccccc;
+}
+#nav ul ul a {
+  color: #cccccc;
+}
+#nav li > a:hover, 
+#nav ul li:hover > a {
+	background-repeat: no-repeat;
+	background-position: bottom center no-repeat;
+	background-color: rgba(138, 0, 0, 0.65);
+	color: #ffffff;
+	text-decoration: none;
+}
+#nav li ul {
+  background: none repeat scroll 0% 0% rgba(155, 16, 16, 0.75);
+  display: none;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  position: absolute;
+  width: 13em;
+  z-index: 200;
+}
+#nav li:hover ul {
+  display: block;
+}
+#nav li li {
+  display: block;
+  float: none;
+  margin: 0px;
+  padding: 0px;
+}
+#nav li:hover li a {
+  background: none;
+}
+#nav li ul a {
+	3display: block;
+	font-style: normal;
+	margin: 0px;
+	padding: 0.25em 1em 0.25em 1em;
+	text-align: left;
+	color: rgba(255,255,255,0.90);
+	border-width: 3px;
+}
+#nav li ul a:hover,
+#nav li ul li:hover > a {
+	background-repeat: no-repeat;
+	background-position: center left no-repeat;
+	background-color: rgba(168, 14, 14, 0.53);
+	border: 0px;
+	color: rgba(255,255,255,0.73);
+	text-decoration: none;
+}
+#nav p {
+  clear: left;
+}
+#nav ul ul li {
+  position: relative;
+}
+#nav ul ul ul {
+  left: -9999px;
+  top: 0;
+}
+#nav ul ul li:hover > ul {
+  left: 100%;
+}
+#nav.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#nav.align-center > ul {
+  text-align: center;
+}
+#nav > ul > li {
+  	position: relative;  
+	font-size: 1em;
+}
+
+
+#nav.align-right > ul > li {
+  float: right;
+}
+#nav.align-right > ul > li:hover > ul {
+  right: 0;
+  left: auto;
+  text-align: right;
+}
+#nav.align-right ul ul li a {
+  text-align: right;
+}
+#nav.align-right ul ul li:hover > ul {
+  left: auto;
+  right: 100%;
+}
+
+#nav ul .sous-menu {
+	height : 5em;
+	z-index : 1;
+	height: 4em;
+	background: none repeat scroll 0% 0% rgba(51, 51, 51, 0);
+}
+
+/*----------------SECTION----------------*/
+
+section
+{
+	display: block;
+}
+
+section:last-child, article:last-child {
+    margin-bottom: 0px;
+}
+
+/*-----------------------BLOCK-FOOTER----------------------------*/
+
+#block-footer {
+	background : #252121;
+	position: relative;
+	color: #858484;
+    padding: 2em 0px;
+	float:left;
+	width: 100%;
+}
+
+#block-footer ul.reference li {
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+#block-footer ul.contact li {
+    border-top-color: rgba(255, 255, 255, 0.05);
+}
+
+#block-footer a {
+	text-decoration:none;
+	color:inherit;
+}
+
+#block-footer .petit-conteneur{
+	text-align:center;
+}
+
+#block-footer .petit-conteneur h2{
+	padding-bottom:1em;
+}
+
+/*------------------ROW--------------*/
+
+.row:first-child > * {
+    padding-top: 0px;
+}
+.row > * {
+    padding-left: 34px;
+}
+.row > * {
+    float: left;
+}
+
+
+/*------------Conteneur--------------*/
+.conteneur {
+    margin-left: auto;
+    margin-right: auto;
+    width: 68%;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.petit-conteneur {
+	float: left;
+	margin-bottom: 4em;
+	width: 32%;
+}
+
+.petit-conteneur .button{
+	padding-bottom:1em;
+}
+
+.petit-conteneur .supp{
+	float: right;
+}
+
+.petit-conteneur .supp img {
+	width: 30px;
+	height: 30px;
+}
+
+.petit-conteneur .box p{
+	margin-left:1.5em;
+}
+
+.petit-conteneur .box #prix {
+	font-family: "Century Gothic";
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 0;
+	color: rgba(173,11,11,1);
+	float: right;
+	font-size: 1.3em;
+}
+
+
+.large-conteneur{
+	width : 100%;
+}
+
+.main-conteneur{
+	width:66.7%
+}
+
+
+
+
+/*---------------BLOCK-MAIN---------*/
+
+#block-main{
+	padding: 4em 0px 5em;
+	position : relative;
+	background : #F7F7F7;
+	float:left;
+	width:100%;
+	border-top: 2px solid rgb(204, 204, 204);
+
+}
+
+
+/*--------------------TITRE-------------------*/
+
+.titre h2 {
+	background: #F7F7F7;
+	font-family: "Century Gothic";
+	font-weight: 500;
+}
+
+header.titre {
+	margin: 0px 0px 3em;
+    margin-bottom: 0px;
+	position: relative;
+	text-align: center;
+	border-top: 1px solid #CCC;
+	margin-bottom: 2em;
+}
+
+header.titre h2 {
+    position: relative;
+    top: -0.65em;
+    display: inline;
+    margin: 0px;
+    padding: 0px 1em;
+}
+
+/*--------------BOX-------------------*/
+
+.box {
+	background: none repeat scroll 0% 0% #FFF;
+	border-bottom: 1px solid #CCC;
+   	padding: 2.75em 1.75em;
+	-webkit-box-shadow: 4px 4px 5px 3px rgba(134,134,134,1.00);
+	box-shadow: 4px 4px 5px 3px rgba(134,134,134,1.00);
+	padding-bottom: 5em;
+}
+
+.box .image {
+	left: 1.75em;
+	top: 1.75em;
+	margin: -4.5em 0px 2.25em -3.5em;
+	position: relative;
+    width: auto;
+}
+
+.box #vendu {
+	padding-top:2em;	
+}
+
+/*------------------IMAGE------------------*/
+
+.image img {
+    display: block;
+    width: 100%;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+img #icon{
+	width : 20px;
+	height: 20px;
+	float: right;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    margin: 0px 0px 2em;
+	display: inline-block;
+    outline: 0px none;
+}
+
+img.img_visible{
+	display:block;
+	z-index:9999;
+}
+
+/*------------------FORMULAIRE-------------------------*/
+
+.formulaire .box{
+	width: 50%;
+	margin: auto;
+	padding-top: 1em;
+	padding-bottom:6em;
+}
+
+.loginpage .formulaire .box{
+	padding-bottom:2em;	
+}
+.formulaire p {
+	font-size : 1.3em;
+	font-family: "Century Gothic";
+}
+
+.formulaire a{
+	color: #AD0B0B;
+	text-decoration: none;
+	margin-left: 3em;
+}
+
+.formulaire a:hover {
+	text-shadow: 0px 2px 2px #7D7D7D;
+}
+
+.formulaire input#pic {
+	padding-left: 3em;
+}
+
+#Type{
+	text-align: center;	
+	font-size:1.5em;
+}
+
+/*------------------BOUTON--------------------*/
+
+input[type="button"], input[type="submit"], input[type="reset"], .button {
+	font-size: 1.1em;
+	padding: 0.65em 1.5em;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	border: 0px none;
+	background-repeat: repeat;
+	background-position: 0% 0% #B11111;
+	background-image: none;
+	background-color: #AD0B0B;
+	background-attachment: scroll;
+	color: #EFEFEF;
+	outline: 0px none;
+	transition: background-color 0.25s ease-in-out 0s;
+	float: right;
+	margin-right: 0.5em;
+	box-shadow: 1px 1px 1px 0px #6E6E6E;
+	margin-top: 0em;
+	font-weight: 400;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover, .button:hover {
+	background-color: rgba(138, 0, 0, 1);
+	color: #ffffff;
+	text-decoration: none;
+}
+
+
+form input[type="submit"]{
+	margin-top:1em;
+}
+
+/*----------------TEXTBOX----------------------------*/
+
+form input[type="text"], form input[type="email"], form input[type="password"], form select, form textarea {
+    display: block;
+    padding: 0.75em 1em;
+    font-size: 1em;
+    border: 1px solid #DDD;
+    background: none repeat scroll 0% 0% #F7F7F7;
+    width: 90%;
+	margin-left: 2em;
+}
+
+#prix input[type="text"] {
+	width : 45%
+}
+
+#desc input[type="text"] {
+	height: 6em;
+}
+
+
+/*---------------------------ANNONCE-------------------------*/
+
+.main-conteneur .box {
+    padding-bottom: 1em;
+}
+
+.main-conteneur #prix p{
+	text-align: center;
+	background-color: rgba(173,11,11,1.00);
+	;
+	color: rgba(255,255,255,1);
+	font-family: "Century Gothic";
+	font-size: 3em;
+	width: 5em;
+	float: right;
+	margin-right: -28px;
+	margin-top: -13px;
+}
+
+.main-conteneur #proprio{
+	float: right;
+	background-image: url("../images/proprio.png");
+	background-size: 310px 100px;
+	background-repeat: no-repeat;
+	width: 20em;
+	padding-left: 7em;
+	margin-right: -5em;
+}
+
+.main-conteneur #type h3{
+	margin-top:0px;
+	margin-left:-10px;
+}
+
+.main-conteneur .box {
+	font-family: "Century Gothic";
+}
+
+.main-conteneur p{
+	font-family : Calibri;
+	font-size: 1.1em;
+}
+
+.main-conteneur #type{
+	border-bottom-width:5px;
+	border-bottom-color: rgba(0,0,0,1.00);
+}
+
+.main-conteneur p{
+	margin-left:2em;
+}
+
+/*---------------------------SOCIAL-------------------------*/
+
+ul.social {
+    margin: 0px 0px 3.25em;
+	padding:0px;
+}
+ul.social {
+    overflow: hidden;
+    cursor: default;
+}
+
+.icon > .label {
+    display: none;
+}
+
+ul.social li:first-child {
+    margin-left: 0px;
+}
+
+ul.social li{
+	display:inline-block;	
+	margin-left:5px;	
+}
+
+ul.social li a {
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	font: inherit;
+	vertical-align: baseline;
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.25s ease-in-out 0s;
+}
+
+ul.social li a.twitter {
+    background-image: url("../images/twitter.png");
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+}
+
+ul.social li a.facebook {
+    background-image: url("../images/fb.png");
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+}
+
+ul.social li a.linkedin {
+    background-image: url("../images/lkd.png");
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+}
+
+ul.social li a.google-plus {
+    background-image: url("../images/google+.png");
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+}
+
+/*--------------------------ICON--------------------------------*/
+
+.icon {
+    position: relative;
+    text-decoration: none;
+	
+}
+
+/*--------------------------CONTACT-----------------------------*/
+
+.contact{
+	padding-left:1em;	
+}
+
+ul.contact li:first-child {
+    padding-top: 0px;
+    border-top: 0px none;
+}
+
+ul.contact li {
+    position: relative;
+    border-top: 1px solid #DDD;
+    padding: 1.3em 0px 1.3em 7em;
+}
+
+ul.contact li h3 {
+    position: absolute;
+    left: 0px;
+    margin-top: 0em;
+    font-size: 1.1em;
+}
+
+ul.contact li:first-child h3 {
+    margin-top: 1em;
+}
+
+ul.contact li p {
+    margin: 0px;
+}
+
+ul{
+	list-style: outside none none;
+}
+
+/*--------------------------------------------REFERENCE--------------------------*/
+.reference {
+	padding-left:1em;	
+}
+
+.reference li{
+	padding-bottom: 0.5em;
+	text-align: left;	
+	margin-left: 7em;
+	
+}
+
+
+/*-----------------------------------VOSAPPARTS---------------------------------*/
+
+.vos_apparts_page .button{
+	margin-top:1em;
+}
+
+.vos_apparts_page .box{
+	padding-bottom:3em;	
+}
+
+.vos_apparts_page #vendu a {
+	text-decoration:none;
+	color:inherit;
+	color: #AD0B0B;
+}
+
+.vos_apparts_page .petit-conteneur p2{
+	color:	rgba(173,11,11,1.00);
+}
+
+.vos_apparts_page .petit-conteneur p3{
+	font-weight: 600;
+	font-size:1.3em;
+	font-family: Calibri;	
+	margin-right:0.5em;
+	color:inherit;
+}
+
+.vos_apparts_page .petit-conteneur #prix {
+	margin: 0px;
+	float: right;
+}
+
+.vos_apparts_page .petit-conteneur #bouton{
+	margin-top:4em;	
+}
+
+.divbias{
+	-webkit-transform: rotate(40deg);
+	-moz-transform: rotate(40deg);
+	-o-transform: rotate(40deg);
+	-ms-transform: rotate(40deg);
+	transform: rotate(30deg);
+	margin-top: -179px;
+	font-size: 5em;
+	margin-bottom: 40px;
+	margin-left: 5px;
+	color: rgba(0, 0, 0, 0.55);
+	font-family: "Century Gothic";	
+}
+
+.inscriptionpage input[type="submit"] {
+    margin-top: 0px;
+}
+
+
+
+/*-----------------------------------------SLIDER---------------------------------------*/
+
+#slider, .slider{
+	overflow:hidden;	
+}
+
+#slider  .img_invisible, .slider .img_invisible{
+	display:block;
+}
+
+#slider ul, .slider ul{
+	padding: 0px;
+	margin: 0px;
+	
+}
+
+/*-----------------------------------------NEXTER---------------------------------------*/
+
+#nexter{
+	overflow:hidden;
+}
+
+
+
+#nexter ul{
+	padding: 0px;
+	margin: 0px;
+	
+}
+
+/*-----------------------------------SUPPRIMER-------------------------------------------*/
+
+.supprimer{
+	z-index: 1;
+	position: absolute;
+	margin-top: -2.5%;
+	margin-left: 15%;
+}
+
+.box .supp img{
+	float:right;
+	width: auto;
+	height: 35px;
+	padding: 5px;
+}
+
+.supp{
+	float:right;
+	width: auto;
+	height: 35px;
+	padding: 5px;
+}

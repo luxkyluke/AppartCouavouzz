@@ -1,0 +1,34 @@
+<div class="formulaire">
+ 	<div class="box">                           
+     <FORM name = "vente" METHOD = "GET" ACTION="javascript:saveVente()">                                	
+     	<p>Type :</p> 
+         <div id="type">
+             <INPUT type="radio" name="type" value="Studio" checked> Studio 
+             <INPUT type="radio" name="type" value="T1"> T1
+             <INPUT type="radio" name="type" value="T2"> T2
+             <INPUT type="radio" name="type" value="T3"> T3 
+         </div>
+         <div id="textbox">  
+             <div >       								
+                 <p>Adresse :</p> 
+                 <input type = "text" id="adresse" name = "adresse" autofocus/>
+             </div>
+             <div >
+                 <p>Prix :</p>
+                 <input type = "text" id="prix" name = "prix" /> 
+             </div>
+             <div >
+                 <p>Description :</p>
+                 <input type = "text" id="desc" name = "desc" />
+             </div>
+                <div>
+             	<p>Photos : </p>
+             	<input type="file" name="pic1" id="pic1" accept="image/gif, image/jpeg, image/png" />
+              <input type="file" name="pic2" id="pic2" accept="image/gif, image/jpeg, image/png" />
+              <input type="file" name="pic3" id="pic3" accept="image/gif, image/jpeg, image/png" />
+             </div>
+         </div>
+         <input type="submit" class="valide" id="val" value="valider" />
+     </FORM>
+  </div>
+</section>
