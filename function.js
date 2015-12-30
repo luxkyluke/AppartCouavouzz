@@ -25,7 +25,7 @@ var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouav
 
 $(document).ready(function(){
 	var nav = navigator.appName ;
-	if(nav == 'Google Chrome')
+	if(nav == 'netscape')
 		$("#block-footer").load(chrome.extension.getURL('footer.html'));
 	else	
 		$("#block-footer").load('footer.html');
@@ -125,7 +125,6 @@ function recupApparts(){
 		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
 }
 
-//COUCOU COUAVOUZZ !!!!!
 
 function refreshMainConteneur(titre){
 	document.getElementById('main-conteneur').innerHTML="";
