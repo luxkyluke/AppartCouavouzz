@@ -20,7 +20,7 @@ function Apparts(studio, T1, T2, T3){
 }
 
 var apparts;	
-var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\projet';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){
@@ -82,15 +82,17 @@ function saveVente(){
 	}
 	var type;
 	for (i=0 ; i<4 ; i++){
-      if (document.vente.type[i].checked)
+      if (document.vente.type[i].checked){
       	  type = document.vente.type[i].value;
+      	  if(type == 'Studio')
+      	  	type = type.toLowerCase();
+      }
     }
 	var desc = $("#desc").val();
 	var prix = $("#prix").val();
 	var adresse = $("#adresse").val();
 	var appart = new Appart(type, desc, prix, adresse, photos);
-	if(type == "Studio"){
-		appart.type="studio";
+	if(type == "studio"){
 		apparts.studio.push(appart);
 	}
 	else if (type == "T1")
@@ -106,6 +108,18 @@ function saveVente(){
 }
 
 function recupApparts(){
+
+	/*$.ajax
+    ({
+        type: "GET",
+        dataType : 'json',
+        async: false,
+        url: 'http://your.host/save_json.php',
+        data: { data: JSON.stringify(eventsholded) },
+        success: function () {alert("Thanks!"); },
+        failure: function() {alert("Error!");}
+    });*/
+
 	apparts=JSON.parse(localStorage.getItem('apparts'));	
 	if(apparts == null || apparts.length == 0)
 		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
@@ -150,9 +164,9 @@ function affAppart(type){
 								$('#'+type + i + "-" + j).attr('src', pathimg);
 								nbImg++;
 							});
-							redimFenetreImg();
 							if(nbImg > 1)	{
 								listenerSlider(i);
+								redimFenetreImg();
 							}
 						}
 						else
@@ -207,7 +221,7 @@ function getAppart(type){
 }
 
 function suppAppart(idApp, type){
-	if (confirm("Voulez-vous vraiment supprimer cette tache ?")) {	   
+	if (confirm("Voulez-vous vraiment supprimer cette annonce ?")) {	   
 		getAppart(type).splice(idApp, 1);
 		saveApparts();
 	}
