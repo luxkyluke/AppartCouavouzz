@@ -20,8 +20,7 @@ function Apparts(studio, T1, T2, T3){
 }
 
 var apparts;	
-var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
-
+var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
 
 $(document).ready(function(){
 	var nav = navigator.appName ;
