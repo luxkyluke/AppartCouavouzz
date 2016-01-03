@@ -2,6 +2,9 @@
 
 var imgHeight;
 var boxHeightMax=0;
+var JSON_url =  "apparts.json";
+var tags;
+
 
 function Appart(type, desc, prix, adresse, photos){
 	//this.id = id;
@@ -26,15 +29,16 @@ var apparts;
 //var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
 var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
-$(document).ready(function(){
 
+$(document).ready(function(){
+	
 	var nav = navigator.appName ;
 	if(nav == 'netscape')
 		$("#block-footer").load(chrome.extension.getURL('footer.html'));
 	else	
 		$("#block-footer").load('footer.html');
 	$("#block-header").load('header.html');
-	
+
 	document.addEventListener("touchstart", function(){}, true);
 
 	if (window.File && window.FileReader && window.FileList && window.Blob){
@@ -45,6 +49,10 @@ $(document).ready(function(){
 			var appart= new Appart("studio", "super appart vu sur la mer tout ça", "50 000", "22 rue du roule", photos);
 			apparts.studio.push(appart);
 			saveApparts();*/
+			alert("salope");
+			$( "#rech-text" ).autocomplete({
+		      source: tags
+		    });
 		}
 		else 
 			alert("Désolé, mais le Web Storage n'est pas suppoté");
@@ -71,8 +79,38 @@ function stopSlide(){
 function saveApparts(){
 	localStorage.setItem('apparts', JSON.stringify(apparts));
 	//location.reload();
-} 
+} 	
 
+function recupApparts(){
+
+	/*var getAjax = $.ajax({
+        url: JSON_url,
+        type: "GET",
+        dataType: "json"
+    });
+
+	getAjax.done(function(data) {
+	    apparts = data;
+	});
+
+	getAjax.fail(function(jqXHR, textStatus) {
+	    alert('impossible de charge les appartements');
+	})*/
+
+	apparts=JSON.parse(localStorage.getItem('apparts'));	
+	if(apparts == null || apparts.length == 0)
+		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
+
+	tags = new Array;
+	$.each (apparts, function(i, type){
+		$.each (type, function(i, apt){
+			tags.push(apt.adresse);
+		});
+	});
+
+}
+
+//enregistre la vente d'un appart
 function saveVente(){
 	var path = "\\images\\appart\\";
 	var defaultPath = path + "none.jpg";
@@ -112,23 +150,7 @@ function saveVente(){
 	//reaffTaches();
 }
 
-function recupApparts(){
 
-	/*$.ajax
-    ({
-        type: "GET",
-        dataType : 'json',
-        async: false,
-        url: 'http://your.host/save_json.php',
-        data: { data: JSON.stringify(eventsholded) },
-        success: function () {alert("Thanks!"); },
-        failure: function() {alert("Error!");}
-    });*/
-
-	apparts=JSON.parse(localStorage.getItem('apparts'));	
-	if(apparts == null || apparts.length == 0)
-		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
-}
 
 
 function refreshMainConteneur(titre){
@@ -179,11 +201,11 @@ function affAppart(type){
 				   		    
 					$('#box'+i).append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
 					$('#box'+i).append("<header><h3>Description</h3></header>");
+					$('#box'+i).append("<p>"+ apt.adresse +"</p>");				
 					if(apt.desc.length > 25)
-						$('#box'+i).append("<p>"+ apt.desc.slice(0,30)+"..." +"</p>");
+						$('#box'+i).append("<p>"+ apt.desc.slice(0,30	)+"..." +"</p>");
 					else
-						$('#box'+i).append("<p>"+ apt.desc +"</p>");
-					$('#box'+i).append("<p>"+ apt.adresse +"</p>");													
+						$('#box'+i).append("<p>"+ apt.desc +"</p>");									
 					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
 				$('#pt-cont'+i).append("</section>");
 			$('#row'+row).append("</div>");
@@ -301,8 +323,11 @@ function affAnnonce(indApp, type){
 						   			$('#slider'+type+i).append('<ul><li><img></li></ul>');     
 								$('#box').append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
 								$('#box').append("<header><h3>Description</h3></header>");
-								$('#box').append("<p>"+ apt.desc +"</p>");
-								$('#box').append("<p>"+ apt.adresse +"</p>");													
+								$('#box').append("<p>"+ apt.adresse +"</p>");			
+								if(apt.desc.length > 25)
+									$('#box'+i).append("<p>"+ apt.desc.slice(0,30	)+"..." +"</p>");
+								else
+									$('#box'+i).append("<p>"+ apt.desc +"</p>");										
 								$('#box').append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');				
 					}
 				}
