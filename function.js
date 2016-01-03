@@ -19,8 +19,12 @@ function Apparts(studio, T1, T2, T3){
 	this.T3=T3;
 }
 
-var apparts;	
-var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var apparts;
+
+// /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
+
+//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 $(document).ready(function(){
 
@@ -175,7 +179,10 @@ function affAppart(type){
 				   		    
 					$('#box'+i).append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
 					$('#box'+i).append("<header><h3>Description</h3></header>");
-					$('#box'+i).append("<p>"+ apt.desc +"</p>");
+					if(apt.desc.length > 25)
+						$('#box'+i).append("<p>"+ apt.desc.slice(0,30)+"..." +"</p>");
+					else
+						$('#box'+i).append("<p>"+ apt.desc +"</p>");
 					$('#box'+i).append("<p>"+ apt.adresse +"</p>");													
 					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
 				$('#pt-cont'+i).append("</section>");
