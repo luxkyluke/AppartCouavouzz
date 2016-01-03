@@ -23,13 +23,15 @@ var apparts;
 var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
 
 $(document).ready(function(){
+
 	var nav = navigator.appName ;
 	if(nav == 'netscape')
 		$("#block-footer").load(chrome.extension.getURL('footer.html'));
 	else	
 		$("#block-footer").load('footer.html');
 	$("#block-header").load('header.html');
-
+	
+	document.addEventListener("touchstart", function(){}, true);
 
 	if (window.File && window.FileReader && window.FileList && window.Blob){
 		if(typeof(Storage) !== "undefined") {
@@ -150,11 +152,11 @@ function affAppart(type){
 				$('#pt-cont'+i).append('<section class="box" id="box'+i+'">');
 					$("#box"+i).append('<div class="supprimer"><a onclick="suppAppart(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><img src="#" type="button" id=\'supp'+i+'\' class="supp"></a></div>');
 					$('#supp' + i).attr('src', pathRepImg+"\\images\\supp.png");
-					$('#box'+i).append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+i+'">');
+					$('#box'+i).append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
 						var photos =apt.photos;
 						if(photos != null){
 							
-							$('#slider'+i).append('<ul id="ul'+i+'"></ul>');
+							$('#slider'+type+i).append('<ul id="ul'+i+'"></ul>');
 							var nbImg = 0;
 							$.each (photos, function(j, pho){
 								var pathimg = pathRepImg +photos[j]; 
@@ -163,12 +165,12 @@ function affAppart(type){
 								nbImg++;
 							});
 							if(nbImg > 1)	{
-								listenerSlider(i);
+								listenerSlider(type, i);
 								redimFenetreImg();
 							}
 						}
 						else
-				   			$('#slider').append('<ul><li><img></li></ul>'); 
+				   			$('#slider'+type+i).append('<ul><li><img></li></ul>'); 
 						
 				   		    
 					$('#box'+i).append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
@@ -188,8 +190,8 @@ function affAppart(type){
 	}				
 }	
 
-function listenerSlider(i){
-	$("#slider"+i+":has(ul li:gt(1))").hover(
+function listenerSlider(type, i){
+	$("#slider"+type+i+":has(ul li:gt(1))").hover(
 		function (){	
 			setTimeout(function(){slideImg()}, 500);
 			interval = setInterval(function (){slideImg()}, 4000); 
@@ -271,10 +273,10 @@ function affAnnonce(indApp, type){
 					if(appart!=null){
 		                $('.row').append('<div class=\"petit-conteneur\" id="pt-cont">');
 		                	$('#pt-cont').append('<section class="box" id="box">');
-							$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+i+'">');
+							$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
 								var photos =apt.photos;
 								if(photos != null){
-									$('#slider'+i).append('<ul id="ul'+i+'"></ul>');
+									$('#slider'+type+i).append('<ul id="ul'+i+'"></ul>');
 									var nbImg = 0;
 									$.each (photos, function(j, pho){
 										var pathimg = pathRepImg +photos[j]; 
@@ -282,13 +284,14 @@ function affAnnonce(indApp, type){
 										$('#'+type + i + "-" + j).attr('src', pathimg);
 										nbImg++;
 									});
-									redimFenetreImg();	
+										
 									if(nbImg > 1){
-										//listenerSlider(i);
+										listenerSlider(i);
+										redimFenetreImg();
 									}
 								}
 						   		else
-						   			$('#slider').append('<ul><li><img></li></ul>');     
+						   			$('#slider'+type+i).append('<ul><li><img></li></ul>');     
 								$('#box').append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
 								$('#box').append("<header><h3>Description</h3></header>");
 								$('#box').append("<p>"+ apt.desc +"</p>");
