@@ -287,7 +287,7 @@ section:last-child, article:last-child {
 .petit-conteneur {
 	float: left;
 	margin-bottom: 4em;
-	width: 32%;
+	width: 300px;
 }
 
 .petit-conteneur .button{
@@ -776,8 +776,8 @@ ul{
 .supprimer{
 	z-index: 1;
 	position: absolute;
-	margin-top: -2.5%;
-	margin-left: 15%;
+	margin-top: -38px;
+	margin-left: 198px;
 }
 
 .box .supp img{
