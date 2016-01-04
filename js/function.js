@@ -50,6 +50,9 @@ $(document).ready(function(){
 			      source: tags
 			    });
 			}, 0);
+			$("#burger").on('click', function(){
+				$('#nav ul').toggleClass("show");
+			});
 		}
 		else 
 			alert("Désolé, mais le Web Storage n'est pas suppoté");
@@ -101,11 +104,23 @@ function recupApparts(){
 	tags = new Array;
 	$.each (apparts, function(i, type){
 		$.each (type, function(i, apt){
-			tags.push(apt.adresse);
+			if(!estDansTags(apt.adresse)){ 
+				//alert(tags[i]+" != "+apt.adresse);
+				tags.push(apt.adresse);
+			}
 		});
 	});
 
 }
+
+function estDansTags(adr){
+	for(var i=0; i<tags.length ; ++i){
+		if(tags[i] == adr)
+			return true;			
+	}
+	return false;
+}
+
 
 //enregistre la vente d'un appart
 function saveVente(){
@@ -161,15 +176,23 @@ function refreshMainConteneur(titre){
 
 function affAppart(type){
 	var apts = getAppart(type);	
-	var nbAppartMaxRow=0;
-	var row=0;
 	var titre = "Nos "+ type.charAt(0).toUpperCase() + type.slice(1) + "s";
 	refreshMainConteneur(titre);
 	if(apts == null || apts.length == 0){
-		$('#section').append("Malheureusement aucun "+ type +"s n'est disponible à l'achat...");
+		$('#section').append("Malheureusement aucun "+ type +"s n'est disponible...");
 	}
 	else{
-		$('#section').append('<div class="row" id ="row'+row+'">');
+		affPlsApparts(apts, type);
+	}				
+}	
+
+function affPlsApparts(apts, type){
+	var row=0;
+	var nbAppartMaxRow=0;
+	$('#section').append('<div class="row" id ="row'+row+'">');
+		if(apts == null || apts.length == 0 && type == 'rech'){
+			$('#section').append("Malheureusement aucun appart' de correspond à la recherche...");
+		}
 		$.each (apts, function(i, apt){
 			$('#row'+row).append('<div class="petit-conteneur" id="pt-cont'+i+'">');
 				$('#pt-cont'+i).append('<section class="box" id="box'+i+'">');
@@ -213,8 +236,7 @@ function affAppart(type){
 				$('#section').append('<div class="row" id ="row'+row+'">');
 			}
 		});
-	}				
-}	
+}
 
 function listenerSlider(type, i){
 	$("#slider"+type+i+":has(ul li:gt(1))").hover(
@@ -337,4 +359,22 @@ function redimFenetreImg(){
 	
 	imgHeight = $("#nexter ul li img").height();
 	$("#grand-conteneur #article .image").css({height:imgHeight});
+}
+
+function recherche(){
+	refreshMainConteneur("Recherche");
+	strRech = $("#search-box").val();
+	var apts = getAppartsRech(strRech);
+	affPlsApparts(apts, 'rech');
+}
+
+function getAppartsRech(str){
+	var apts = new Array();
+	$.each (apparts, function(i, type){
+		$.each (type, function(i, apt){
+			if(apt.adresse == str)
+				apts.push(apt);			
+		});
+	});
+	return apts;
 }
