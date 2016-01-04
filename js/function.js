@@ -26,8 +26,8 @@ var apparts;
 
 // /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
 
-var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
-//var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
+//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){
@@ -49,10 +49,11 @@ $(document).ready(function(){
 				$( "#search-box" ).autocomplete({
 			      source: tags
 			    });
+			    $("#burger img").on('click', function(){
+					$('#menu').toggleClass("show");
+				});
 			}, 0);
-			$("#burger").on('click', function(){
-				$('#nav ul').toggleClass("show");
-			});
+			
 		}
 		else 
 			alert("Désolé, mais le Web Storage n'est pas suppoté");

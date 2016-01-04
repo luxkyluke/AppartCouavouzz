@@ -156,7 +156,7 @@ body
   background: none;
 }
 #nav li ul a {
-	3display: block;
+	display: block;
 	font-style: normal;
 	margin: 0px;
 	padding: 0.25em 1em 0.25em 1em;
@@ -846,13 +846,61 @@ ul{
     #menu{
 		display: none;
 	}
-    #nav ul li{
+    #nav ul{
     	display: none;
     }
     #nav ul.show{
     	display: block;
     	width: 100%;
+
     }
+
+    #nav ul.show li{
+    	display: block;
+    	width: 100%;
+    	background: #AD0B0B none repeat scroll 0% 0%;
+    	z-index: 5;
+    }
+
+
+    #nav li a{
+		display: block;
+		line-height: 35px;
+		padding: 10px 3em;
+		text-align: center;
+		text-decoration: none;
+	}
+
+	#nav .sous-menu ul{
+		width: 100%;
+	}
+
+	#nav .sous-menu ul li:hover{
+		background:   #620D0D none repeat scroll 0% 0%;
+
+	}
+
+	#nav .sous-menu:hover{
+		height: 237px;
+	}
+
+	#nav ul.show li ul li{
+		display: block;
+		position : relative;
+		z-index: 15;
+	}
+
+	#nav li ul a {
+		display: block;
+		font-style: normal;
+		margin: 0px;
+		padding: 0.25em 1em 0.25em 1em;
+		text-align: left;
+		color: rgba(255,255,255,0.90);
+		border-width: 3px;
+		z-index: 15;
+	}
+
     #rech{
     	display: none;
     }*/
