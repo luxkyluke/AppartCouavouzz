@@ -49,10 +49,11 @@ $(document).ready(function(){
 			var appart= new Appart("studio", "super appart vu sur la mer tout ça", "50 000", "22 rue du roule", photos);
 			apparts.studio.push(appart);
 			saveApparts();*/
-			alert("salope");
-			$( "#rech-text" ).autocomplete({
-		      source: tags
-		    });
+			setTimeout(function(){
+				$( "#rech-text" ).autocomplete({
+			      source: tags
+			    });
+			}, 0);
 		}
 		else 
 			alert("Désolé, mais le Web Storage n'est pas suppoté");
