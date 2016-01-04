@@ -45,12 +45,8 @@ $(document).ready(function(){
 		if(typeof(Storage) !== "undefined") {
 			recupApparts();
 
-			/*var photos = {0 : "\\images\\appart\\studio1-1.jpg", 1 : "\\images\\appart\\studio1-2.jpg", 2 : "\\images\\appart\\studio1-3.jpg"};
-			var appart= new Appart("studio", "super appart vu sur la mer tout ça", "50 000", "22 rue du roule", photos);
-			apparts.studio.push(appart);
-			saveApparts();*/
 			setTimeout(function(){
-				$( "#rech-text" ).autocomplete({
+				$( "#search-box" ).autocomplete({
 			      source: tags
 			    });
 			}, 0);
