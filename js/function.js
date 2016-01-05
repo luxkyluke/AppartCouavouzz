@@ -26,8 +26,8 @@ var apparts;
 
 // /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
 
-//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
-var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+//var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){

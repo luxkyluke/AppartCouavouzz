@@ -901,7 +901,7 @@ ul{
 	}
 
     #rech{
-    	display: none;
+    	float: right; 	
     }*/
 }
 /*
