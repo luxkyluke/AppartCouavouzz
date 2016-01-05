@@ -293,7 +293,7 @@ section:last-child, article:last-child {
 .petit-conteneur {
 	float: left;
 	margin-bottom: 4em;
-	width: 300px;
+	width: 320px;
 }
 
 .petit-conteneur .button{
@@ -917,10 +917,6 @@ ul{
     #nav ul .sous-menu {
 	   height: auto;	
     }	
-
-
-    		
-
 
 }
 /*
