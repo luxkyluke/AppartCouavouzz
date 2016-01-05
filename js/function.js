@@ -235,7 +235,7 @@ function affPlsApparts(apts, type){
 					$('#box'+i).append("<header><h3>Description</h3></header>");
 					$('#box'+i).append("<p>"+ apt.adresse +"</p>");				
 					if(apt.desc.length > 25)
-						$('#box'+i).append("<p>"+ apt.desc.slice(0,30	)+"..." +"</p>");
+						$('#box'+i).append("<p>"+ apt.desc.slice(0,30)+"..." +"</p>");
 					else
 						$('#box'+i).append("<p>"+ apt.desc +"</p>");									
 					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
