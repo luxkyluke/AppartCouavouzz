@@ -910,12 +910,17 @@ ul{
 	}
 
     #rech{
+<<<<<<< HEAD
     	display: none;
     }
 
     #nav ul .sous-menu {
 	   height: auto;	
     }	
+=======
+    	float: right; 	
+    }*/
+>>>>>>> origin/master
 }
 /*
 @media only screen and (max-width: 500px) {
