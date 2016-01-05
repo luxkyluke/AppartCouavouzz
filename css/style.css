@@ -843,6 +843,11 @@ ul{
        	padding: 10px;
        	width: 50px;
     }
+
+    .logos  img.col-6{
+    	width: 100%;
+    }
+    
     #menu{
 		display: none;
 	}
@@ -890,6 +895,10 @@ ul{
 		z-index: 15;
 	}
 
+	#grand-conteneur{
+		width: 93%;
+	}
+
 	#nav li ul a {
 		display: block;
 		font-style: normal;
@@ -903,7 +912,11 @@ ul{
 
     #rech{
     	display: none;
-    }*/
+    }
+
+    #nav ul .sous-menu {
+	   height: auto;	
+    }	
 }
 /*
 @media only screen and (max-width: 500px) {

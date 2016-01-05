@@ -23,7 +23,7 @@ function Apparts(studio, T1, T2, T3){
 }
 
 var apparts;
-
+var croix=false;
 // /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
 
 //var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
@@ -49,9 +49,20 @@ $(document).ready(function(){
 				$( "#search-box" ).autocomplete({
 			      source: tags
 			    });
-			    $("#burger img").on('click', function(){
+
+			    $("#burger img, nav ul, nav ul li ul li").on('click', function(){
 					$('#menu').toggleClass("show");
+					if(!croix){
+						$("#burger img").attr('src', "images/supp.png");
+						croix=true;
+					}
+					else{
+						$("#burger img").attr('src', "images/menu.png");
+						croix=false;
+					}
+					
 				});
+
 			}, 0);
 			
 		}
