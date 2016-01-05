@@ -4,7 +4,7 @@ var imgHeight;
 var boxHeightMax=0;
 var JSON_url =  "apparts.json";
 var tags;
-
+var idCurentApt;
 
 function Appart(type, desc, prix, adresse, photos){
 	//this.id = id;
@@ -26,8 +26,8 @@ var apparts;
 var croix=false;
 // /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
 
-var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
-//var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
+//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){
@@ -110,8 +110,10 @@ function recupApparts(){
 	})*/
 
 	apparts=JSON.parse(localStorage.getItem('apparts'));	
-	if(apparts == null || apparts.length == 0)
+	if(apparts == null || apparts.length == 0){
+		idCurentApt = 0;
 		apparts=new Apparts(new Array(), new Array(), new Array(), new Array());
+	}
 
 	tags = new Array;
 	$.each (apparts, function(i, type){
@@ -158,7 +160,7 @@ function saveVente(){
 	var desc = $("#desc").val();
 	var prix = $("#prix").val();
 	var adresse = $("#adresse").val();
-	var appart = new Appart(type, desc, prix, adresse, photos);
+	var appart = new Appart( type, desc, prix, adresse, photos);
 	if(type == "studio"){
 		apparts.studio.push(appart);
 	}
@@ -198,6 +200,17 @@ function affAppart(type){
 	}				
 }	
 
+function equals(apt1, apt2){
+	return (apt1.type == apt1.type && apt1.desc == apt2.desc && apt1.prix == apt2.prix && apt1.adresse == apt2.adresse && apt1.photos === apt2.photos);
+}
+
+function getIndex(apt){
+	var apts = getAppart(apt.type);
+	for (var i=0; i<apts.length;++i)
+		if(equals(apts[i], apt))
+			return i;
+}	
+
 function affPlsApparts(apts, type){
 	var row=0;
 	var nbAppartMaxRow=0;
@@ -210,6 +223,9 @@ function affPlsApparts(apts, type){
 				$('#pt-cont'+i).append('<section class="box" id="box'+i+'">');
 					$("#box"+i).append('<div class="supprimer"><a onclick="suppAppart(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><img src="#" type="button" id=\'supp'+i+'\' class="supp"></a></div>');
 					$('#supp' + i).attr('src', pathRepImg+"\\images\\supp.png");
+					if(type=='rech')
+								$('#box'+i).append('<a onclick="affAnnonce(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
+							else
 					$('#box'+i).append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
 						var photos =apt.photos;
 						if(photos != null){
@@ -333,7 +349,7 @@ function affAnnonce(indApp, type){
 					if(appart!=null){
 		                $('.row').append('<div class=\"petit-conteneur\" id="pt-cont">');
 		                	$('#pt-cont').append('<section class="box" id="box">');
-							$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
+								$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
 								var photos =apt.photos;
 								if(photos != null){
 									$('#slider'+type+i).append('<ul id="ul'+i+'"></ul>');
