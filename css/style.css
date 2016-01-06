@@ -433,6 +433,7 @@ img.img_visible{
 	margin: auto;
 	padding-top: 1em;
 	padding-bottom:6em;
+	width: 50%;
 }
 
 .loginpage .formulaire .box{
@@ -836,6 +837,12 @@ ul{
 }
 
 
+@media only screen and (min-width: 800px, max-width: 1000px) {
+	.formulaire .box{
+		width: 100%;
+	}
+}
+
 @media only screen and (max-width: 800px) {
 
     #burger img{
@@ -920,22 +927,16 @@ ul{
     #nav ul .sous-menu {
 	   height: auto;	
     }	
-
-
-
+	.formulaire .box{
+			width: 80%;
+		}
 }
 
 @media only screen and (max-width: 500px) {
-
-	
+	.formulaire .box{
+		width: 100%;
+	}
 }
-/*
-@media only screen and (orientation: portrait) {
-    body {
-        background-image:url("arriere2.jpg");
-    }
-    */
-
 
 /*----------RECHERCHE------------------*/
 
