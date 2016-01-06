@@ -362,7 +362,7 @@ function affAnnonce(indApp, type){
 									});
 										
 									if(nbImg > 1){
-										listenerSlider(i);
+										listenerSlider(type, i);
 										redimFenetreImg();
 									}
 								}
