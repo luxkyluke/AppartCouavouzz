@@ -518,8 +518,9 @@ form input[type="text"], form input[type="email"], form input[type="password"], 
 #desc input[type="text"] {
 	height: 6em;
 }
+#photos{
 
-
+}
 /*---------------------------ANNONCE-------------------------*/
 
 .main-conteneur .box {
@@ -909,29 +910,26 @@ ul{
 		z-index: 15;
 	}
 
-    #rech{
-		float: right; 
-    	display: none;
+    #nav #rech{
+	
+	    z-index: 3;
+   		margin-right: 60px;
+    	height: 50px;
     }
 
     #nav ul .sous-menu {
 	   height: auto;	
     }	
 
-}
-/*
-@media only screen and (max-width: 500px) {
-   [class*="col-"] {
-        width: 100%;
-   }
-   .header{
-        background-image:url("citta-ideale-m.jpg");
-   }
-   .aside img{
-        width: 30%;
-   }
+
+
 }
 
+@media only screen and (max-width: 500px) {
+
+	
+}
+/*
 @media only screen and (orientation: portrait) {
     body {
         background-image:url("arriere2.jpg");
