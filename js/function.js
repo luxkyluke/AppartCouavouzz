@@ -61,7 +61,12 @@ $(document).ready(function(){
 						$("#burger img").attr('src', "images/menu.png");
 						croix=false;
 					}
-					
+				});
+
+				$("#propos").on('click', function(){
+					$('html, body').animate({
+						scrollTop:$("#footer").offset().top
+					}, 'slow');
 				});
 
 			}, 0);
@@ -373,9 +378,9 @@ function affAnnonce(indApp, type){
 								$('#box').append("<header><h3>Description</h3></header>");
 								$('#box').append("<p>"+ apt.adresse +"</p>");			
 								if(apt.desc.length > 25)
-									$('#box'+i).append("<p>"+ apt.desc.slice(0,25	)+"..." +"</p>");
+									$('#box').append("<p>"+ apt.desc.slice(0,25	)+"..." +"</p>");
 								else
-									$('#box'+i).append("<p>"+ apt.desc +"</p>");										
+									$('#box').append("<p>"+ apt.desc +"</p>");										
 								$('#box').append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');				
 					}
 				}
