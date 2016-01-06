@@ -51,7 +51,19 @@ $(document).ready(function(){
 			      source: tags
 			    });
 
-			    $("#burger img, nav ul, nav ul li ul li").on('click', function(){
+			    $('#burger img, nav ul li ul li').on('click', function(){
+					$('#menu').toggleClass("show");
+					if(!croix){
+						$("#burger img").attr('src', "images/supp.png");
+						croix=true;
+					}
+					else{
+						$("#burger img").attr('src', "images/menu.png");
+						croix=false;
+					}
+				});
+
+				$('#nav ul').not($( "#rech" )).on('click', function(){
 					$('#menu').toggleClass("show");
 					if(!croix){
 						$("#burger img").attr('src', "images/supp.png");
