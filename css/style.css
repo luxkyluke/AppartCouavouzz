@@ -293,7 +293,7 @@ section:last-child, article:last-child {
 .petit-conteneur {
 	float: left;
 	margin-bottom: 4em;
-	width: 320px;
+	width: 300px;
 }
 
 .petit-conteneur .button{
@@ -1011,11 +1011,7 @@ ul{
 }
 
 #rech{
-	width: 20%;
-	position: relative;
-	float: right;
 	z-index: 3;
 	margin-right: 60px;
-	margin-top: -49px;
-	height: 0;
+	height: 30px;
 }
