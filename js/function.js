@@ -251,7 +251,7 @@ function affPlsApparts(apts, type){
 					$('#box'+i).append("<header><h3>Description</h3></header>");
 					$('#box'+i).append("<p>"+ apt.adresse +"</p>");				
 					if(apt.desc.length > 25)
-						$('#box'+i).append("<p>"+ apt.desc.slice(0,30)+"..." +"</p>");
+						$('#box'+i).append("<p>"+ apt.desc.slice(0,25)+"..." +"</p>");
 					else
 						$('#box'+i).append("<p>"+ apt.desc +"</p>");									
 					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
@@ -372,7 +372,7 @@ function affAnnonce(indApp, type){
 								$('#box').append("<header><h3>Description</h3></header>");
 								$('#box').append("<p>"+ apt.adresse +"</p>");			
 								if(apt.desc.length > 25)
-									$('#box'+i).append("<p>"+ apt.desc.slice(0,30	)+"..." +"</p>");
+									$('#box'+i).append("<p>"+ apt.desc.slice(0,25	)+"..." +"</p>");
 								else
 									$('#box'+i).append("<p>"+ apt.desc +"</p>");										
 								$('#box').append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');				
@@ -380,14 +380,26 @@ function affAnnonce(indApp, type){
 				}
 }
 
-//redimesion fenetre de l'image
 function redimFenetreImg(){
+	$(".slider ul li img").load(function(){
+		imgH = $(this).height();
+		$(".box .image").css({height:imgH});
+	});
+
+	$("#nexter ul li img").load(function(){
+		imgHeight = $(this).height();
+		$("#grand-conteneur #article .image").css({height:imgHeight});
+	});
+}
+
+//redimesion fenetre de l'image
+/*function redimFenetreImg(){
 	imgH = $(".slider ul li img").height();
 	$(".box .image").css({height:imgH});
 	
 	imgHeight = $("#nexter ul li img").height();
 	$("#grand-conteneur #article .image").css({height:imgHeight});
-}
+}*/
 
 function recherche(){
 	refreshMainConteneur("Recherche");
