@@ -1,10 +1,11 @@
 // JavaScript Document
 
-var imgHeight;
+
 var boxHeightMax=0;
-var JSON_url =  "apparts.json";
 var tags;
 var idCurentApt;
+var imgH;
+var imgHeight;
 
 function Appart(type, desc, prix, adresse, photos){
 	//this.id = id;
@@ -240,8 +241,8 @@ function affPlsApparts(apts, type){
 							});
 							if(nbImg > 1)	{
 								listenerSlider(type, i);
-								redimFenetreImg();
 							}
+							redimFenetreImg();
 						}
 						else
 				   			$('#slider'+type+i).append('<ul><li><img></li></ul>'); 
@@ -362,9 +363,9 @@ function affAnnonce(indApp, type){
 									});
 										
 									if(nbImg > 1){
-										listenerSlider(type, i);
-										redimFenetreImg();
+										//listenerSlider(type, i);
 									}
+									redimFenetreImg();
 								}
 						   		else
 						   			$('#slider'+type+i).append('<ul><li><img></li></ul>');     
@@ -383,12 +384,12 @@ function affAnnonce(indApp, type){
 function redimFenetreImg(){
 	$(".slider ul li img").load(function(){
 		imgH = $(this).height();
-		$(".box .image").css({height:imgH});
+		$(".slider").css({height:imgH});
 	});
 
 	$("#nexter ul li img").load(function(){
 		imgHeight = $(this).height();
-		$("#grand-conteneur #article .image").css({height:imgHeight});
+		$(" #nexter").css({height:imgHeight});
 	});
 }
 
