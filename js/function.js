@@ -27,8 +27,8 @@ var apparts;
 var croix=false;
 // /!\ T'as plus qu'a commenter ma ligne et a décommenter la tienne !
 
-var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
-//var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
+//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){
@@ -272,7 +272,7 @@ function affPlsApparts(apts, type){
 						$('#box'+i).append("<p>"+ apt.desc.slice(0,25)+"..." +"</p>");
 					else
 						$('#box'+i).append("<p>"+ apt.desc +"</p>");									
-					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
+					$('#box'+i).append('<footer><a onclick="affAnnonce(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');
 				$('#pt-cont'+i).append("</section>");
 			$('#row'+row).append("</div>");
 			nbAppartMaxRow++;
