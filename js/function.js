@@ -63,7 +63,7 @@ $(document).ready(function(){
 					}
 				});
 
-				$('#nav ul').not($( "#rech" )).on('click', function(){
+				$('#nav ul li').not($( "#rech" )).on('click', function(){
 					$('#menu').toggleClass("show");
 					if(!croix){
 						$("#burger img").attr('src', "images/supp.png");
@@ -137,7 +137,6 @@ function recupApparts(){
 	$.each (apparts, function(i, type){
 		$.each (type, function(i, apt){
 			if(!estDansTags(apt.adresse)){ 
-				//alert(tags[i]+" != "+apt.adresse);
 				tags.push(apt.adresse);
 			}
 		});
@@ -239,7 +238,7 @@ function affPlsApparts(apts, type){
 		$.each (apts, function(i, apt){
 			$('#row'+row).append('<div class="petit-conteneur" id="pt-cont'+i+'">');
 				$('#pt-cont'+i).append('<section class="box" id="box'+i+'">');
-					$("#box"+i).append('<div class="supprimer"><a onclick="suppAppart(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><img src="#" type="button" id=\'supp'+i+'\' class="supp"></a></div>');
+					$("#box"+i).append('<div class="supprimer"><a onclick="suppAppart(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><img src="#" type="button" id=\'supp'+i+'\' class="supp"></a></div>');
 					$('#supp' + i).attr('src', pathRepImg+"\\images\\supp.png");
 					if(type=='rech')
 								$('#box'+i).append('<a onclick="affAnnonce(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
@@ -420,6 +419,17 @@ function redimFenetreImg(){
 }*/
 
 function recherche(){
+	if($('#burger').is(':visible')){
+		$('#menu').toggleClass("show");
+		if(!croix){
+			$("#burger img").attr('src', "images/supp.png");
+			croix=true;
+		}
+		else{
+			$("#burger img").attr('src', "images/menu.png");
+			croix=false;
+		}
+	}
 	refreshMainConteneur("Recherche");
 	strRech = $("#search-box").val();
 	var apts = getAppartsRech(strRech);
