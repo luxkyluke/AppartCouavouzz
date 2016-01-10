@@ -114,7 +114,8 @@ body
 #nav li a{
 	display: block;
 	line-height: 35px;
-	padding: 10px 3em;
+	padding-top: 8px;
+	padding-bottom: 15px;
 	text-align: center;
 	text-decoration: none;
 }
@@ -1043,6 +1044,5 @@ ul{
 
 #rech{
 	z-index: 3;
-	margin-right: 60px;
 	height: 28px;
 }
