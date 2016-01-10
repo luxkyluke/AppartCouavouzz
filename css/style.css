@@ -835,6 +835,36 @@ ul{
 	}
 }
 
+@media only screen and (min-width: 800px, max-width: 1300px) {
+	#nav #menu #rech .search-box:focus {
+	   width: 230px;
+	}
+}
+
+@media only screen and (min-width: 800px, max-width: 1150px) {
+	#nav #menu #rech .search-box:focus {
+	   width: 180px;
+	}
+}
+
+
+@media only screen and (min-width: 800px, max-width: 1030px) {
+	#nav #menu #rech{
+		width: 3%;
+	}
+	#nav #menu #rech .search-conteneur, #nav #menu #rech .search-box{
+		margin: 0;
+	}
+
+	#nav .current{
+			display :none;
+	}
+
+	#nav #menu #rech .search-box:focus {
+	   width: 150px;
+	}
+}
+
 @media only screen and (max-width: 800px) {
 
     #burger img{
