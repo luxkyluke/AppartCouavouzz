@@ -6,9 +6,11 @@ var tags;
 var idCurentApt;
 var imgH;
 var imgHeight;
+var apparts;
+var croix=false;
 
+//Constructeur Appart
 function Appart(type, desc, prix, adresse, photos){
-	//this.id = id;
 	this.type = type;
 	this.desc = desc;
 	this.prix = prix;
@@ -16,6 +18,7 @@ function Appart(type, desc, prix, adresse, photos){
 	this.photos = photos;
 }
 
+//Contstructeur Apparts la list qui contient tous les apparts
 function Apparts(studio, T1, T2, T3){
 	this.studio=studio;
 	this.T1=T1;
@@ -23,24 +26,18 @@ function Apparts(studio, T1, T2, T3){
 	this.T3=T3;
 }
 
-var apparts;
-var croix=false;
-
-
-var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
-//var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
+// IMPORTANT !! Chemin du repertoire courant où se trouve le site
+//var pathRepImg = 'file:///C:\\Users\\Lisa\\Documents\\PROGRAMMATION_IMAC_1\\WEB\\AppartCouavouzz';
+var pathRepImg = 'file:///C:\\Users\\TonioDeMoreno\\Documents\\Pweb\\AppartCouavouzz';
 
 
 $(document).ready(function(){
-	
-	var nav = navigator.appName ;
-	if(nav == 'netscape')
-		$("#block-footer").load(chrome.extension.getURL('footer.html'));
-	else	
-		$("#block-footer").load('footer.html');
+	var nav = navigator.appName ;	
+	//chargement des pages header et footer (probleme google chrome)
+	$("#block-footer").load('footer.html');
 	$("#block-header").load('header.html');
 
-	document.addEventListener("touchstart", function(){}, true);
+	//document.addEventListener("touchstart", function(){}, true);
 
 	if (window.File && window.FileReader && window.FileList && window.Blob){
 		if(typeof(Storage) !== "undefined") {
@@ -89,32 +86,31 @@ $(document).ready(function(){
 	}
 	else
 	  document.write('<i>API File non reconnue par ce navigateur.</i>');
-
-	
-	
 });
 
-
+//Carrousel Annonce
 function nextImg(){
 	$("#nexter ul").animate({marginTop:-imgHeight}, 2000, function(){
 		$(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
 	});	
 }
 
+//Stop defilement carrousel
 function stopSlide(){
 	clearInterval(interval);
 }
 
-// TRAITEMENT
+// Enregistre les Apparts dans le localStorage
 function saveApparts(){
 	localStorage.setItem('apparts', JSON.stringify(apparts));
-	//location.reload();
 } 	
 
+// Recupère les apparts du localStorage
 function recupApparts(){
 
+	//requete ajax récuperation fichier JSON
 	/*var getAjax = $.ajax({
-        url: localStorage.getItem('apparts'),
+        url: JSON_url,
         type: "GET",
         dataType: "json"
     });
@@ -144,6 +140,7 @@ function recupApparts(){
 
 }
 
+// Verifie si une adresse se trouve dans le tableau tags
 function estDansTags(adr){
 	for(var i=0; i<tags.length ; ++i){
 		if(tags[i] == adr)
@@ -190,12 +187,9 @@ function saveVente(){
 
 	saveApparts();
 	affAppart(type);
-	//reaffTaches();
 }
 
-
-
-
+//Recharge le conteneur principal 
 function refreshMainConteneur(titre){
 	document.getElementById('main-conteneur').innerHTML="";
 	$("#main-conteneur").append('<div id="block-main">');
@@ -205,6 +199,7 @@ function refreshMainConteneur(titre){
 					$('#section').append('<header class="titre"> <h2> '+ titre +' </h2></header>');
 }
 
+//affiche la page des types apparts
 function affAppart(type){
 	var apts = getAppart(type);	
 	var titre = "Nos "+ type.charAt(0).toUpperCase() + type.slice(1) + "s";
@@ -217,10 +212,12 @@ function affAppart(type){
 	}				
 }	
 
+//verifie l'égalité entre 2 apparts
 function equals(apt1, apt2){
 	return (apt1.type == apt1.type && apt1.desc == apt2.desc && apt1.prix == apt2.prix && apt1.adresse == apt2.adresse && apt1.photos === apt2.photos);
 }
 
+//retour l'indice de l'appart passer en paramètre
 function getIndex(apt){
 	var apts = getAppart(apt.type);
 	for (var i=0; i<apts.length;++i)
@@ -228,6 +225,7 @@ function getIndex(apt){
 			return i;
 }	
 
+//permet de charger les pages de types et de recherches
 function affPlsApparts(apts, type){
 	var row=0;
 	var nbAppartMaxRow=0;
@@ -283,6 +281,7 @@ function affPlsApparts(apts, type){
 		});
 }
 
+//ajouter un listener au hover
 function listenerSlider(type, i){
 	$("#slider"+type+i+":has(ul li:gt(1))").hover(
 		function (){	
@@ -294,12 +293,14 @@ function listenerSlider(type, i){
 	});	
 }
 
+//Fait défiler les image au hover
 function slideImg(){
 	$(".slider ul:hover").animate({marginTop:-imgH}, 2000, function(){
 		$(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
 	});	
 }			
 
+//Retourne la listes des apparts du type demandé
 function getAppart(type){
 	if(apparts == null)
 		return;
@@ -313,6 +314,7 @@ function getAppart(type){
 		return apparts.T3;
 }
 
+//Supprimer un appart
 function suppAppart(idApp, type){
 	if (confirm("Voulez-vous vraiment supprimer cette annonce ?")) {	   
 		getAppart(type).splice(idApp, 1);
@@ -321,11 +323,13 @@ function suppAppart(idApp, type){
 	affAppart(type);
 }
 
+// afficher la page de formulaire
 function vendre(){
 	refreshMainConteneur("vendre");
 	$('#section').load('vendre.html');
 }
 
+//affiche une annonce
 function affAnnonce(indApp, type){
 	if(indApp == null || type == null || indApp == 'undefined' || type == 'undefined' || indApp == '' || type == '' )
 		return;
@@ -397,6 +401,7 @@ function affAnnonce(indApp, type){
 				}
 }
 
+//redimentionne la fentre du carrousel 
 function redimFenetreImg(){
 	$(".slider ul li img").load(function(){
 		imgH = $(this).height();
@@ -409,15 +414,7 @@ function redimFenetreImg(){
 	});
 }
 
-//redimesion fenetre de l'image
-/*function redimFenetreImg(){
-	imgH = $(".slider ul li img").height();
-	$(".box .image").css({height:imgH});
-	
-	imgHeight = $("#nexter ul li img").height();
-	$("#grand-conteneur #article .image").css({height:imgHeight});
-}*/
-
+// affichage de la page resultat de la recherche
 function recherche(){
 	if($('#burger').is(':visible')){
 		$('#menu').toggleClass("show");
@@ -436,6 +433,7 @@ function recherche(){
 	affPlsApparts(apts, 'rech');
 }
 
+//retourne les apparts avec l'adresse = str
 function getAppartsRech(str){
 	var apts = new Array();
 	$.each (apparts, function(i, type){
