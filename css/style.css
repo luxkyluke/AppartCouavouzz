@@ -839,6 +839,36 @@ ul{
 	}
 }
 
+@media only screen and (min-width: 800px, max-width: 1300px) {
+	#nav #menu #rech .search-box:focus {
+	   width: 230px;
+	}
+}
+
+@media only screen and (min-width: 800px, max-width: 1150px) {
+	#nav #menu #rech .search-box:focus {
+	   width: 180px;
+	}
+}
+
+
+@media only screen and (min-width: 800px, max-width: 1030px) {
+	#nav #menu #rech{
+		width: 3%;
+	}
+	#nav #menu #rech .search-conteneur, #nav #menu #rech .search-box{
+		margin: 0;
+	}
+
+	#nav .current{
+			display :none;
+	}
+
+	#nav #menu #rech .search-box:focus {
+	   width: 150px;
+	}
+}
+
 @media only screen and (max-width: 800px) {
 
     #burger img{
@@ -976,7 +1006,7 @@ ul{
 
 .search-box:focus {
   -webkit-transition: width 0.6s cubic-bezier(0, 0, 0, 1.5), border-radius 0.6s, background 0.6s;
-  transition: width 0.6s cubic-bezier(0, 0, 0, 1.2), border-radius 0.6s, background 0.6s;
+  transition: width 0.6s cubic-bezier(0, 0, 0, 1.5), border-radius 0.6s, background 0.6s;
   border: none;
   outline: none;
   box-shadow: none;
