@@ -88,12 +88,7 @@ $(document).ready(function(){
 	  document.write('<i>API File non reconnue par ce navigateur.</i>');
 });
 
-//Carrousel Annonce
-function nextImg(){
-	$("#nexter ul").animate({marginTop:-imgHeight}, 2000, function(){
-		$(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
-	});	
-}
+
 
 //Stop defilement carrousel
 function stopSlide(){
@@ -239,23 +234,19 @@ function affPlsApparts(apts, type){
 					$("#box"+i).append('<div class="supprimer"><a onclick="suppAppart(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><img src="#" type="button" id=\'supp'+i+'\' class="supp"></a></div>');
 					$('#supp' + i).attr('src', pathRepImg+"\\images\\supp.png");
 					if(type=='rech')
-								$('#box'+i).append('<a onclick="affAnnonce(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
+								$('#box'+i).append('<a onclick="affAnnonce(\''+getIndex(apt)+'\', \''+apt.type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+"-"+i+'">');
 							else
-					$('#box'+i).append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
+					$('#box'+i).append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+"-"+i+'">');
 						var photos =apt.photos;
 						if(photos != null){
 							
-							$('#slider'+type+i).append('<ul id="ul'+i+'"></ul>');
-							var nbImg = 0;
+							$('#slider'+type+"-"+i).append('<ul id="ul'+i+'"></ul>');
 							$.each (photos, function(j, pho){
 								var pathimg = pathRepImg +photos[j]; 
 								$('#ul'+i).append('<li><img src="#"id="'+type + i + "-" + j +'" /></li>');
 								$('#'+type + i + "-" + j).attr('src', pathimg);
-								nbImg++;
 							});
-							if(nbImg > 1)	{
-								listenerSlider(type, i);
-							}
+							listenerSlider(type, i);
 							redimFenetreImg();
 						}
 						else
@@ -283,9 +274,11 @@ function affPlsApparts(apts, type){
 
 //ajouter un listener au hover
 function listenerSlider(type, i){
-	$("#slider"+type+i+":has(ul li:gt(1))").hover(
-		function (){	
-			setTimeout(function(){slideImg()}, 500);
+	$("#slider"+type+"-"+i+":has(ul li:gt(0))").hover(
+		function (){
+			var nbLi = $("#slider"+type+"-"+i+" ul > *").length;
+			if(nbLi<=1) return;
+			setTimeout(function(){slideImg(type, i)}, 500);
 			interval = setInterval(function (){slideImg()}, 4000); 
 		}
 		,function (){
@@ -294,11 +287,15 @@ function listenerSlider(type, i){
 }
 
 //Fait défiler les image au hover
-function slideImg(){
-	$(".slider ul:hover").animate({marginTop:-imgH}, 2000, function(){
+function slideImg(type, i){
+	var nbLi = $("#slider"+type+"-"+i+" ul > *").length;
+	if(nbLi<=1) return;
+	$("#slider"+type+"-"+i+" ul").animate({marginTop:-imgH}, 2000, function(){
+		
 		$(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
+		
 	});	
-}			
+}		
 
 //Retourne la listes des apparts du type demandé
 function getAppart(type){
@@ -333,7 +330,6 @@ function vendre(){
 function affAnnonce(indApp, type){
 	if(indApp == null || type == null || indApp == 'undefined' || type == 'undefined' || indApp == '' || type == '' )
 		return;
-	//var ind = (int) indApp;
 	document.getElementById('main-conteneur').innerHTML="";
 	$("#main-conteneur").append('<div id="block-main">');
 		$("#block-main").append('<div id="conteneur">');
@@ -342,7 +338,7 @@ function affAnnonce(indApp, type){
 					$("#grand-conteneur").append('<article class="box post" id="article">');
 						var apts = getAppart(type);
 						var appart = apts[indApp];
-						if(appart!=null){
+						if(appart != null){
 							$("#article").append("<a href=\"\" onclick =\"return false;\"><div id =\"nexter\" class=\"image\">");
 							var photos =appart.photos;
 							$("#nexter").append('<ul id="ul"></ul>');	
@@ -352,7 +348,9 @@ function affAnnonce(indApp, type){
 								$('#'+type + j).attr('src', pathimg);
 							});
 							redimFenetreImg();
-							$("#nexter:has(ul li:gt(1))").click(function(){nextImg()});
+
+							$("#nexter:has(ul li:gt(0))").click(function(){nextImg()});
+
 							$("#article").append("<div id=\"prix\"> <p>"+appart.prix+" &euro;</p></div>");
 							$("#article").append("<div id=\"type\"><h3>" + appart.type.charAt(0).toUpperCase() + appart.type.slice(1) +"</h3>");
 							$("#article").append("<header><h2>Description</h2></header>");
@@ -370,10 +368,10 @@ function affAnnonce(indApp, type){
 					if(appart!=null){
 		                $('.row').append('<div class=\"petit-conteneur\" id="pt-cont">');
 		                	$('#pt-cont').append('<section class="box" id="box">');
-								$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+i+'">');
+								$('#box').append('<a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);"><div class ="image slider" id="slider'+type+"-"+i+'">');
 								var photos =apt.photos;
 								if(photos != null){
-									$('#slider'+type+i).append('<ul id="ul'+i+'"></ul>');
+									$('#slider'+type+"-"+i).append('<ul id="ul'+i+'"></ul>');
 									var nbImg = 0;
 									$.each (photos, function(j, pho){
 										var pathimg = pathRepImg +photos[j]; 
@@ -381,14 +379,11 @@ function affAnnonce(indApp, type){
 										$('#'+type + i + "-" + j).attr('src', pathimg);
 										nbImg++;
 									});
-										
-									if(nbImg > 1){
-										//listenerSlider(type, i);
-									}
+									listenerSlider(type, i);
 									redimFenetreImg();
 								}
 						   		else
-						   			$('#slider'+type+i).append('<ul><li><img></li></ul>');     
+						   			$('#slider'+type+"-"+i).append('<ul><li><img></li></ul>');     
 								$('#box').append("<p id=\"prix\">"+ apt.prix +" &euro; </p>");
 								$('#box').append("<header><h3>Description</h3></header>");
 								$('#box').append("<p>"+ apt.adresse +"</p>");			
@@ -399,6 +394,13 @@ function affAnnonce(indApp, type){
 								$('#box').append('<footer><a onclick="affAnnonce(\''+i+'\', \''+type+'\')" href="javascript:void(0);" class=\"button alt\"> Voir l\'annonce </a></footer>');				
 					}
 				}
+}
+
+//Carrousel Annonce
+function nextImg(){
+	$("#nexter ul").animate({marginTop:-imgHeight}, 2000, function(){
+		$(this).css({marginTop:0}).find("li:last").after($(this).find("li:first"));
+	});	
 }
 
 //redimentionne la fentre du carrousel 
