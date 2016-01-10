@@ -114,7 +114,7 @@ function saveApparts(){
 function recupApparts(){
 
 	/*var getAjax = $.ajax({
-        url: JSON_url,
+        url: localStorage.getItem('apparts'),
         type: "GET",
         dataType: "json"
     });
